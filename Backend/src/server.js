@@ -2,7 +2,6 @@ import express from "express";
 import { MongoClient } from "mongodb";
 
 async function start() {
-  // const url = `mongodb+srv://priyanshu18032003:Priyanshu6535@cluster0.rn98rof.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
   const url = `mongodb://localhost:27017`;
   const Mongoclient = new MongoClient(url);
 
