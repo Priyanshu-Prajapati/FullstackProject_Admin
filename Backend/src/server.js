@@ -1,9 +1,12 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 
+const cors = require("cors");
+
 async function start() {
-  const url = `mongodb://localhost:27017`;
-  const Mongoclient = new MongoClient(url);
+  // const url = `mongodb+srv://priyanshu18032003:Priyanshu6535@cluster0.rn98rof.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+  const uri = "mongodb+srv://prajapatipriyanshu077:IgiPztYBO19p2tLV@cluster0.y6k5l.mongodb.net/?appName=Cluster0";
+  const Mongoclient = new MongoClient(uri);
 
   await Mongoclient.connect();
   const db = Mongoclient.db("FullStack-Database");
@@ -11,6 +14,15 @@ async function start() {
 
   const app = express();
   app.use(express.json());
+
+  // OR configure specific origins
+  app.use(
+    cors({
+      origin: "full-stack-project-seven.vercel.app", // Frontend URL
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+    })
+  );
 
   app.get("/api/product", async (req, res) => {
     const products = await db.collection("adminProducts").find({}).toArray();
