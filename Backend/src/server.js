@@ -18,7 +18,7 @@ async function start() {
   // OR configure specific origins
   app.use(
     cors({
-      origin: "full-stack-project-seven.vercel.app", // Frontend URL
+      origin: "fullstack-project-admin.vercel.app", // Frontend URL
       methods: ["GET", "POST", "PUT", "DELETE"],
       allowedHeaders: ["Content-Type", "Authorization"],
     })
